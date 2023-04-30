@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 const App = () => {
   const [value, setValue] = useState('');
   const [message, setMessage] = useState(null);
+  const [previousChats, setPreviousChats] = useState([]);
+  const [currentTitle, setCurrentTitle] = useState(null);
 
   const getMessages = async () => {
     const options = {
@@ -26,6 +28,28 @@ const App = () => {
     }
   }
 
+  useEffect(() => {
+    console.log(currentTitle, value, message)
+    if (!currentTitle && value && message) {
+        setCurrentTitle(value);
+    } else if (currentTitle && value && message) {
+        setPreviousChats(previousChat => {
+          [...previousChats, 
+            {
+              title: currentTitle,
+              role: "user",
+              content: value,
+            },
+            {
+              title: currentTitle,
+              role: message.role,
+              content: message.content,
+            }
+          ]
+        })
+    }
+  }, [currentTitle, message]);
+
   // To do: debug - Console log occurs twice
   return (
     <div className="App">
@@ -39,7 +63,7 @@ const App = () => {
         </nav>
       </section>
       <section className="main">
-        <h1>WillGPT</h1>
+        {!currentTitle && <h1>WillGPT</h1>}
         <ul className="feed">
         </ul>
         <div className="bottomSection">
