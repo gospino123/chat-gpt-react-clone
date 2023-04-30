@@ -1,9 +1,14 @@
+import { useState, useEffect } from 'react';
+
 const App = () => {
+  const [value, setValue] = useState('');
+  const [message, setMessage] = useState(null);
+
   const getMessages = async () => {
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        message: 'hello how are you?'
+        message: value,
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -12,12 +17,16 @@ const App = () => {
     try {
         const response = await fetch('http://localhost:8000/completions', options);
         const data = await response.json();
+
         console.log(data);
+
+        setMessage(data.choices[0].message);
     } catch (error) {
         console.error(error);
     }
   }
 
+  // To do: debug - Console log occurs twice
   return (
     <div className="App">
       <section className="sidebar">
@@ -35,7 +44,7 @@ const App = () => {
         </ul>
         <div className="bottomSection">
           <div className="inputContainer">
-            <input id="chatInput"/>
+            <input id="chatInput" value={value} onChange={e => setValue(e.target.value)}/>
             <div id="submit" onClick={getMessages}>&rarr;</div>
           </div>
           <p className="info">
