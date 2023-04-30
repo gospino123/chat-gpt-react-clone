@@ -95,10 +95,11 @@ p.info {
   bottom: 50%;
   transform: translateY(50%);
   right: 1rem;
+  cursor: pointer;
 }
 
 button#newChat {
-  border: solid 0.5px rgba(var(--colorWhite), 0.5);
+  border: solid 0.5px rgba(var(--colorWhite50Percent));
   background-color: transparent;
   border-radius: 0.3rem;
   padding: 0.7rem;
@@ -106,7 +107,7 @@ button#newChat {
 }
 
 nav {
-  border-top: solid 0.5px rgba(var(--colorWhite), 0.5);
+  border-top: solid 0.5px rgba(var(--colorWhite50Percent));
   padding: 0.7rem;
 }
 
