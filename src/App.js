@@ -6,6 +6,11 @@ const App = () => {
   const [previousChats, setPreviousChats] = useState([]);
   const [currentTitle, setCurrentTitle] = useState(null);
 
+  const createNewChat = () => {
+    setMessage(null);
+    setValue('');
+    setCurrentTitle(null);
+  }
   const getMessages = async () => {
     const options = {
       method: 'POST',
@@ -54,7 +59,7 @@ const App = () => {
   return (
     <div className="App">
       <section className="sidebar">
-        <button id="newChat">+ New Chat</button>
+        <button id="newChat" onClick={createNewChat}>+ New Chat</button>
         <ul className="history">
           <li>Hey there</li>
         </ul>
