@@ -55,9 +55,7 @@ const App = () => {
     }
   }, [message, currentTitle]);
 
-  const currentChat = previousChats.filter(previousChat => previousChat === currentTitle);
-
-  console.log(previousChats);
+  const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle);
 
   // To do: debug - Console log occurs twice
   return (
