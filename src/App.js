@@ -1,16 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const App = () => {
-  const [value, setValue] = useState('');
-  const [message, setMessage] = useState(null);
-  const [previousChats, setPreviousChats] = useState([]);
-  const [currentTitle, setCurrentTitle] = useState(null);
+  const [ value, setValue ] = useState('');
+  const [ message, setMessage ] = useState(null);
+  const [ previousChats, setPreviousChats ] = useState([]);
+  const [ currentTitle, setCurrentTitle ] = useState(null);
 
   const createNewChat = () => {
     setMessage(null);
     setValue('');
     setCurrentTitle(null);
   }
+
   const getMessages = async () => {
     const options = {
       method: 'POST',
@@ -24,9 +25,7 @@ const App = () => {
     try {
         const response = await fetch('http://localhost:8000/completions', options);
         const data = await response.json();
-
-        console.log(data);
-
+        
         setMessage(data.choices[0].message);
     } catch (error) {
         console.error(error);
@@ -34,26 +33,31 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(currentTitle, value, message)
+    console.log(currentTitle, value, message);
     if (!currentTitle && value && message) {
-        setCurrentTitle(value);
-    } else if (currentTitle && value && message) {
-        setPreviousChats(previousChat => {
-          [...previousChats, 
-            {
-              title: currentTitle,
-              role: "user",
-              content: value,
-            },
-            {
-              title: currentTitle,
-              role: message.role,
-              content: message.content,
-            }
-          ]
-        })
+      setCurrentTitle(value);
+    } 
+    if (currentTitle && value && message) {
+      setPreviousChats(prevChats => (
+        [...prevChats, 
+          {
+            title: currentTitle,
+            role: "user",
+            content: value,
+          },
+          {
+            title: currentTitle,
+            role: message.role,
+            content: message.content,
+          }
+        ]
+      ))
     }
-  }, [currentTitle, message]);
+  }, [message, currentTitle]);
+
+  const currentChat = previousChats.filter(previousChat => previousChat === currentTitle);
+
+  console.log(previousChats);
 
   // To do: debug - Console log occurs twice
   return (
@@ -70,10 +74,14 @@ const App = () => {
       <section className="main">
         {!currentTitle && <h1>WillGPT</h1>}
         <ul className="feed">
+          {currentChat?.map((chatMessage, index) => <li key={index}>
+              <p className='role'>{chatMessage.role}</p>
+              <p>{chatMessage.content}</p>
+            </li>)}
         </ul>
         <div className="bottomSection">
           <div className="inputContainer">
-            <input id="chatInput" value={value} onChange={e => setValue(e.target.value)}/>
+            <input id="chatInput" value={value} onChange={(e) => setValue(e.target.value)}/>
             <div id="submit" onClick={getMessages}>&rarr;</div>
           </div>
           <p className="info">
