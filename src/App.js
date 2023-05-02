@@ -56,6 +56,7 @@ const App = () => {
   }, [message, currentTitle]);
 
   const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle);
+  const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)));
 
   // To do: debug - Console log occurs twice
   return (
@@ -63,7 +64,7 @@ const App = () => {
       <section className="sidebar">
         <button id="newChat" onClick={createNewChat}>+ New Chat</button>
         <ul className="history">
-          <li>Hey there</li>
+          {uniqueTitles?.map((uniqueTitle, index) => <li key={index}>{uniqueTitle}</li>)}
         </ul>
         <nav>
           <p>Made by Will</p>
