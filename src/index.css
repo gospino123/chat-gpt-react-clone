@@ -40,6 +40,30 @@ body {
   justify-content: space-between;
 }
 
+button#newChat {
+  border: solid 0.5px rgba(var(--colorWhite50Percent));
+  background-color: transparent;
+  border-radius: 0.3rem;
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+.history {
+  padding: 0.7rem;
+  height: 100%;
+}
+
+.history li {
+  list-style-type: none;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+
+nav {
+  border-top: solid 0.5px rgba(var(--colorWhite50Percent));
+  padding: 0.7rem;
+}
+
 .main {
   height: 100vh;
   width: 100%;
@@ -49,12 +73,6 @@ body {
   justify-content: space-between;
   align-items: center;
   text-align: center;
-}
-
-p.info {
-  color: rgba(var(--colorWhite50Percent));
-  font-size: 0.8rem;
-  padding: 0.7rem;
 }
 
 .bottomSection {
@@ -98,26 +116,8 @@ p.info {
   cursor: pointer;
 }
 
-button#newChat {
-  border: solid 0.5px rgba(var(--colorWhite50Percent));
-  background-color: transparent;
-  border-radius: 0.3rem;
+p.info {
+  color: rgba(var(--colorWhite50Percent));
+  font-size: 0.8rem;
   padding: 0.7rem;
-  cursor: pointer;
-}
-
-nav {
-  border-top: solid 0.5px rgba(var(--colorWhite50Percent));
-  padding: 0.7rem;
-}
-
-.history {
-  padding: 0.7rem;
-  height: 100%;
-}
-
-.history li {
-  list-style-type: none;
-  padding: 1rem 0;
-  cursor: pointer;
 }
