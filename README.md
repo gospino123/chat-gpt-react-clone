@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# ChatGPT Clone
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Following a free 5-hour freeCodeCamp course presented by Ania Kubow, a renowned software developer and course creator, I created my own clone of ChatGPT.
+
+## How it works
+A user types in a message/question in the input field and clicks the right arrow (&rarr;) to send. That request is sent to OpenAI's Chat Completions API endpoint via the backend server. The response is then sent back from OpenAI to the front end via the server. That response is then parsed in a more readable manner by using React and CSS.
+
+'WillGPT' is capable of storing separate chat chains by drawing on React Hooks throughout the user experience. It is capable of answering many questions, but I've limited the response tokens to 50 for testing purposes. This can be changed in the server.js file. Additionally, this is not the newest version of ChatGPT, so there are times at which the LLM has not been primed to be able to interpret and respond expectedly.
+
 ## Available Scripts
+
+**Note: Upon forking this repo, you will need to install the dependencies and create a .env file which has your own API_KEY variable**
+
+In the .env file stored in the root directory, save the following: `API_KEY = 'your-api-key'`
 
 In the project directory, you can run:
 
-### `npm start`
+### `npm start:frontend`
 
-Runs the app in the development mode.\
+Runs app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### `npm start:backend`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Spins up a server that reloads when you make changes.
 
-### `npm run build`
+The server is hosted on [Port 8000](http://localhost:8000) by default, but this port can be changed in the server.js file. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Goals
+1. I would like to provide better signifiers/affordances, so users understand how to use the chat. Active, focus and hover states could be used as well as icons, which are language-agnostic and helpful if intuitive/obvious. 
+2. Accessibility is a big deal for me, so I would like to implement more semantic code to make the user experience equitable for all. Some examples of this would be allowing keyboard users to be able to navigate and activate controls easily and including ARIA attributes when appropriate to better describe different parts of the app.
+3. Extending this project is much easier with a foundation already built. I would love to use some AI prompting before the user interacts with AI in order to prime the responses for certain scenarios ranging from responding in Doge to responding in a Shakespearean tone or responding as if the AI were a historical figure.
+4. For now, the last future goal might be to split some of the code into separate components. For the time being, I did not want to prop drill or manage passing information/props between parent and child or from sibling to sibling, as the goal was to explore OpenAI's capabilities for chat completion.
