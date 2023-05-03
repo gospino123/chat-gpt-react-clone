@@ -86,7 +86,7 @@ nav {
 .feed li {
   display: flex;
   background-color: rgb(var(--colorLightGray));
-  width: 100%;
+  width: calc(100% - (2 * 0.7rem));
   padding: 0.7rem;
   margin: 0.7rem 0;
 }
@@ -109,13 +109,13 @@ nav {
 
 .inputContainer {
   width: 100%;
-  max-width: calc(768px - 20vw);
+  max-width: calc(768px - (2 * 10vw));
   position: relative;
 }
 
 #chatInput {
   padding: 0.9rem 1rem;
-  width: calc(100% - 2rem);
+  width: calc(100% - (2 * 1rem));
   border: none;
   background-color: rgba(var(--colorWhite05Percent));
   border-radius: 0.3rem;
