@@ -1,9 +1,11 @@
 :root {
   --mainFontFamily: sans-serif;
+  --colorLightGray: 68, 70, 84;
   --colorDarkGray: 52, 53, 65;
   --colorDarkerGray: 32, 33, 35;
   --colorWhite05Percent: 255, 255, 255, 0.05;
   --colorWhite50Percent: 255, 255, 255, 0.5;
+  --colorWhite80Percent: 255, 255, 255, 0.8;
   --colorBlack: 0, 0, 0;
   --colorBlack05Percent: 0, 0, 0, 0.05;
 }
@@ -23,12 +25,12 @@ body {
 }
 
 .App {
-  background-color: rgba(var(--colorDarkGray));
+  background-color: rgb(var(--colorDarkGray));
   display: flex;
 }
 
 .sidebar {
-  background-color: rgba(var(--colorDarkerGray));
+  background-color: rgb(var(--colorDarkerGray));
   height: 100vh;
   max-width: 20vw;
   /* To do: to change later */
@@ -67,12 +69,34 @@ nav {
 .main {
   height: 100vh;
   width: 100%;
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+}
+
+.feed {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  padding: 0;
+}
+.feed li {
+  display: flex;
+  background-color: rgb(var(--colorLightGray));
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.7rem 0;
+}
+.feed p {
+  color: rgba(var(--colorWhite80Percent));
+  text-align: left;
+  font-size: 1.1rem;
+}
+.feed p.role {
+  min-width: 10ch;
 }
 
 .bottomSection {
