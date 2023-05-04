@@ -1,7 +1,7 @@
 # ChatGPT Clone
 
 <details><summary>WillGPT Preview</summary>
-
+<p><em>Recording was done slowly to allow for users to view the demo with ease. However, this may be a bit too slow for most. Therefore, I apologize in advance for the .gif's speed.</em></p>
 
 ![Preview of WillGPT, the ChatGPT clone. The user is typing a message to the Language Learning Model, and it is responding coherently](https://github.com/gospino123/chat-gpt-react-clone/blob/main/.github/WillGPT.gif)
 
