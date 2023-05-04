@@ -1,5 +1,9 @@
 # ChatGPT Clone
 
+<details><summary>WillGPT Preview</summary>
+![Preview of WillGPT, the ChatGPT clone. The user is typing a message to the Language Learning Model, and it is responding coherently](./assets/WillGPT.gif)
+</details>
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Following a free 5-hour freeCodeCamp course presented by Ania Kubow, a renowned software developer and course creator, I created my own clone of ChatGPT.
