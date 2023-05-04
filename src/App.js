@@ -39,7 +39,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(currentTitle, value, message);
+    // console.log(currentTitle, value, message);
     if (!currentTitle && value && message) {
       setCurrentTitle(value);
     } 
@@ -64,13 +64,14 @@ const App = () => {
   const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle);
   const uniqueTitles = Array.from(new Set(previousChats.map(previousChat => previousChat.title)));
 
+  // console.log(uniqueTitles)
   // To do: debug - Console log occurs twice
   return (
     <div className="App">
       <section className="sidebar">
         <button id="newChat" onClick={createNewChat}>+ New Chat</button>
         <ul className="history">
-          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={handleUniqueTitleClick}>{uniqueTitle}</li>)}
+          {uniqueTitles?.map((uniqueTitle, index) => <li key={index} onClick={() => handleUniqueTitleClick(uniqueTitle)}>{uniqueTitle}</li>)}
         </ul>
         <nav>
           <p>Made by Will</p>
